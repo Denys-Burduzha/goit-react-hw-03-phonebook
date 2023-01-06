@@ -11,23 +11,23 @@ const INITIAL_STYATE = {
 class ContactForm extends Component {
     state = INITIAL_STYATE;
     
-    handleChangeForm = ({ target }) => {
-        const { name, value } = target
-        this.setState({ [name]: value })
-    }
+handleChangeForm = ({ target }) => {
+    const { name, value } = target
+    this.setState({ [name]: value })
+}
 
-    handleFormSubmit = e => {
-        e.preventDefault()
+handleFormSubmit = e => {
+    e.preventDefault()
 
-        const { name, number } = this.state;
-        const { onAdd } = this.props;
+    const { name, number } = this.state;
+    const { onAdd } = this.props;
 
-        const isValidatedForm = this.validateForm()
+    const isValidatedForm = this.validateForm()
 
-        if (!isValidatedForm) return
-        onAdd({ id: nanoid(), name, number })
-        this.resetForm()
-    }
+    if (!isValidatedForm) return
+    onAdd({ id: nanoid(), name, number })
+    this.resetForm()
+}
 
     validateForm = () => {
         const { name, number } = this.state;
@@ -86,4 +86,5 @@ ContactForm.propTypes = {
   onAdd: PropTypes.func.isRequired,
 };
 
-    export default ContactForm;
+
+export default ContactForm;
